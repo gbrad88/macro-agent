@@ -23,8 +23,11 @@ The **Antigravity Macro Agent** is an autonomous system that monitors, analyzes,
 ### Step 3: Run
 1.  Open the extracted folder.
 2.  Double-click the file named `launcher.bat`.
-3.  **Wait**: A black window will appear. The first time you run it, it takes about 1 minute to install the AI tools.
-4.  The Dashboard will automatically open in your browser.
+3.  **SETUP**: The first time you run it, you will be asked for a **FRED API Key**.
+    *   **[Click Here to Get a Free API Key](https://fred.stlouisfed.org/docs/api/api_key.html)**
+    *   Paste it into the black window when asked and press Enter.
+4.  **Wait**: It will install the AI tools (approx 1 min).
+5.  The Dashboard will automatically open in your browser.
 
 *Note: You only need [Python](https://www.python.org/downloads/) installed on your computer.*
 
