@@ -53,9 +53,18 @@ if %errorlevel% neq 0 (
     goto :error
 )
 
+:: Explicitly Force Install python-dotenv (Fix for Issue #1)
+echo [INFO] Forcing python-dotenv install... >> %LOGFILE%
+.venv\Scripts\pip install python-dotenv --disable-pip-version-check >> %LOGFILE% 2>&1
+
+:: Log Installed Packages for Debugging
+echo [INFO] Current Package List: >> %LOGFILE%
+.venv\Scripts\pip list >> %LOGFILE% 2>&1
+
 :: Verify Critical Modules
 echo [2.5/3] Verifying environment...
 echo [INFO] Verifying imports... >> %LOGFILE%
+:: We check streamlit specifically. dotenv check is redundant if we forced install but we keep good measure.
 .venv\Scripts\python -c "import dotenv; import streamlit; print('Imports successful')" >> %LOGFILE% 2>&1
 if %errorlevel% neq 0 (
     echo [ERROR] Import check failed. >> %LOGFILE%
