@@ -82,7 +82,8 @@ def plot_metric(df, title, color='#29b5e8'):
         height=300
     ).interactive()
     
-    st.altair_chart(chart, use_container_width=True)
+
+    st.altair_chart(chart, width="stretch")
 
 if st.button("Run Daily Audit"):
     with st.spinner("Agent is analyzing markets..."):
@@ -242,7 +243,8 @@ if st.button("Run Daily Audit"):
                  tooltip=['Date', 'Sector', 'Return%']
              ).properties(height=400, title="Sector Performance vs SPY (5 Years)").interactive()
              
-             st.altair_chart(chart, use_container_width=True)
+         
+    st.altair_chart(chart, width="stretch")
 
 
     with tab_global:

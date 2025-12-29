@@ -63,11 +63,11 @@ async def get_market_history():
         
         closes = hist['Close']
         if "^VIX" in closes: 
-            data["VIX"] = closes["^VIX"].fillna(method='ffill').tolist()
+            data["VIX"] = closes["^VIX"].ffill().tolist()
             
         if "HYG" in closes and "TLT" in closes:
-            hyg = closes["HYG"].fillna(method='ffill')
-            tlt = closes["TLT"].fillna(method='ffill')
+            hyg = closes["HYG"].ffill()
+            tlt = closes["TLT"].ffill()
             data["HYG"] = hyg.tolist()
             data["TLT"] = tlt.tolist()
             # Calculate Ratio Series
@@ -97,7 +97,7 @@ async def get_sector_history():
         closes = hist['Close']
         for sym in symbols.split():
             if sym in closes:
-                data[sym] = closes[sym].fillna(method='ffill').tolist()
+                data[sym] = closes[sym].ffill().tolist()
                 
         return data
     except Exception:
