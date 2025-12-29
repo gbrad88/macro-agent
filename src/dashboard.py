@@ -5,16 +5,15 @@ import sys
 
 # --- DEFENSIVE ISOLATION (Phase 2) ---
 # Ensure we deny AppData even if Streamlit reset the path
-try:
-    # Identify if we are running in the bundled environment
-    # In cx_Freeze, sys.executable points to the .exe
-    exe_dir = os.path.dirname(os.path.abspath(sys.executable))
-    
-    # Check if this script is within the executable's directory structure
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    
-    # If the script is relative to the exe (Portable mode), enforce isolation
-    if script_dir.startswith(exe_dir) or "Downloads" in exe_dir or "Dist" in exe_dir:
+# ONLY RUN THIS IN FROZEN MODE (compiled exe)
+if getattr(sys, 'frozen', False):
+    try:
+        # In cx_Freeze, sys.executable points to the .exe
+        exe_dir = os.path.dirname(os.path.abspath(sys.executable))
+        
+        # Check if this script is within the executable's directory structure
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        
         # Filter sys.path to ONLY allow paths inside the exe root
         # We intentionally EXCLUDE the User AppData/Roaming path
         clean_path = [p for p in sys.path if p.startswith(exe_dir) or p.lower().endswith('.zip')]
@@ -22,8 +21,8 @@ try:
         # Ensure we didn't delete everything (sanity check)
         if len(clean_path) > 0:
             sys.path = clean_path
-except:
-    pass
+    except:
+        pass
 # -------------------------------------
 
 # Ensure src is in path
