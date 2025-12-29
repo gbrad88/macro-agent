@@ -73,6 +73,27 @@ if %errorlevel% neq 0 (
     goto :error
 )
 
+:: Check for API Key (Fix for dropped key on new download)
+if not exist ".env" (
+    echo.
+    echo ===================================================
+    echo  SETUP REQUIRED
+    echo ===================================================
+    echo.
+    echo [WARNING] No .env file found with your API Key.
+    echo This happens when you download a new version.
+    echo.
+    set /p USER_KEY="Please paste your FRED_API_KEY (or press Enter to skip): "
+    
+    if "!USER_KEY!" neq "" (
+        echo FRED_API_KEY=!USER_KEY! > .env
+        echo [INFO] .env file saved!
+    ) else (
+        echo [WARNING] Skipping API Key setup. Data fetching will fail.
+    )
+    echo.
+)
+
 :: Run App
 echo [3/3] Launching Dashboard...
 echo [INFO] Launching Streamlit... >> %LOGFILE%
