@@ -1,0 +1,10 @@
+httpx
+pandas
+beautifulsoup4
+python-dotenv
+yfinance
+lxml
+openpyxl
+streamlit
+pyinstaller
+cx_Freeze

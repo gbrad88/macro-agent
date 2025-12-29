@@ -1,0 +1,89 @@
+/* Main Background & Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+html,
+body,
+[class*="css"] {
+    font-family: 'Inter', sans-serif;
+    color: #e0e0e0;
+}
+
+/* Hide Default Streamlit Elements */
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+header {
+    visibility: hidden;
+}
+
+/* Custom Tab Styling */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background-color: transparent;
+}
+
+.stTabs [data-baseweb="tab"] {
+    height: 45px;
+    white-space: pre-wrap;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    color: #888;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #333;
+}
+
+.stTabs [aria-selected="true"] {
+    background-color: #4CAF50 !important;
+    /* Antigravity Green */
+    color: white !important;
+    border: 1px solid #4CAF50;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* Metric Cards (Agent Insights) */
+div[data-testid="stMarkdownContainer"] p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Warning/Success Boxes */
+.stAlert {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Chart Containers */
+.vega-embed {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+    font-weight: 800 !important;
+    letter-spacing: -0.5px;
+}
+
+h1 {
+    background: linear-gradient(90deg, #4CAF50, #00E676);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Global Container Padding */
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 5rem;
+}
